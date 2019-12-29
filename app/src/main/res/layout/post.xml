@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="250dp"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/cardview_light_background"
+            android:weightSum="4"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/name_profile_image"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name_name"
+                    android:text="Name"
+                    android:textSize="36dp"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="top"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="top"
+                    android:id="@+id/name_like"
+                    android:text="Likes: "
+                    android:textSize="30dp"
+                    android:paddingLeft="35dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="top"
+                    android:id="@+id/name_likes"
+                    android:text="10"
+                    android:textSize="30dp"
+                    android:paddingLeft="5dp"
+                    />
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/post_image"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_view_1_name_description"
+                android:text="description"
+                android:textSize="22dp"
+
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="6"
+                >
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_like_name"
+                    android:text="LIKE"
+                    android:textSize="25dp"
+                    android:textColor="@android:color/white"
+                    android:background="@color/cardview_dark_background"
+                    android:layout_weight="2"
+                    />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_share_name"
+                    android:text="SHARE"
+                    android:textSize="25dp"
+                    android:textColor="@android:color/white"
+                    android:background="@color/cardview_dark_background"
+                    android:padding="2dp"
+                    android:fadingEdge="vertical"
+                    android:layout_weight="2"
+                    />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_comment_name"
+                    android:text="COMMENT"
+                    android:textSize="25dp"
+                    android:textColor="@android:color/white"
+                    android:background="@color/cardview_dark_background"
+                    android:padding="2dp"
+                    android:fadingEdge="vertical"
+                    android:layout_weight="2"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>
