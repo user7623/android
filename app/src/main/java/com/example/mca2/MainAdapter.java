@@ -8,9 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.mca2.Models.ViewHolder;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mca2.Models.Post;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +45,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         name.setText(post.getUserName());
         TextView numberLikes = viewHolder.numberLikes;
         numberLikes.setText(post.getLikes());
-        TextView postImage = viewHolder.postImage;
-        postImage.setText(post.getPhoto());
-        TextView descr = viewHolder.description;
-
+        ImageView postImage = viewHolder.postImage;
+        Picasso.get().load(viewHolder.postImage.toString()).into(postImage);/*najednostaven nacin so
+        TextView descr = viewHolder.description;                           Picasso(da kako slikarot)
+                                                                            */
 
 
     }
@@ -65,19 +67,19 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
         public TextView name;
         public TextView numberLikes;
-        public TextView postImage;
+        public ImageView postImage;
         public TextView description;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name_name);
             numberLikes = (TextView) itemView.findViewById(R.id.name_likes);
-            postImage = (TextView) itemView.findViewById(R.id.post_image);
+            postImage = (ImageView) itemView.findViewById(R.id.post_image);
             description = (TextView) itemView.findViewById(R.id.text_view_1_name_description);
         }
     }
     private List<Post> mPost;
-    public MainAdapter(List<Post> posts){
+    public MainAdapter(@NonNull List<Post> posts){
         mPost = posts;
     }
 

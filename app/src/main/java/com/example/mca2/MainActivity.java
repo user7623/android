@@ -1,4 +1,6 @@
 package com.example.mca2;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,11 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
     private IGetService IGetService;
     RecyclerView mRecyclerView;
-    MainAdapter mAdapter;
-    User user;
-    Post post;
-    ArrayList<Post> listOfPosts;
+    //MainAdapter mAdapter;
     List<Post> postovi;
+    List<Comment> komentari;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,34 +121,33 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    private void getComments()
+    public void getComments()  //kako private moze da napravi problem (sovet od intelisence)
     {
         final TextView naslovNaPost = (TextView) findViewById(R.id.name_name);
         Call<List<Comment>> call = IGetService.getComments();
         call.enqueue(new Callback<List<Comment>>() {
             @Override
-            public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
-                if(!response.isSuccessful()){
+            public void onResponse(@NonNull Call<List<Comment>> call,@NonNull Response<List<Comment>> response) {
+                if (!response.isSuccessful()) {
                     naslovNaPost.setText("Code: " + response.code());
                     return;
                 }
-                List<Comment> comments = response.body();
-                for(Comment comment : comments){
-                    String content = "";
-                    content += "ID: " + comment.getId() + "/n";
-                    content += "Comment: " + comment.getComment() + "/n";
-                    content += "User Name: " + comment.getUserName() + "/n/n";
+                List<Comment> Komentari = response.body();
+                for (Comment comment1 : Komentari) {
+                    Comment pom = new Comment();
+                    pom.setUserName(comment1.getUserName());
+                    pom.setComment(comment1.getComment());
+                    pom.setId(comment1.getId());
 
-                    naslovNaPost.append(content);
+                    komentari.add(pom);
+                    Intent showComments = new Intent(MainActivity.this, CommentActivity.class);
+                    startActivity(showComments);
                 }
             }
-
             @Override
             public void onFailure(Call<List<Comment>> call, Throwable t) {
-
+                naslovNaPost.setText(t.getMessage());
             }
         });
-
-
     }
 }
